@@ -1,8 +1,9 @@
+import { Book } from './../../models/book.model';
 import { BookDetailPage } from './../book-detail/book-detail';
 import { BookRestProvider } from './../../providers/book-rest/book-rest';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { book } from '../../models/book.model';
+
 
 /**
  * Generated class for the BookListPage page.
@@ -18,7 +19,7 @@ import { book } from '../../models/book.model';
 export class BookListPage {
 
   category:string;
-  books:book;
+  books:Book;
 
   constructor(public bookRest:BookRestProvider,public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -27,7 +28,7 @@ export class BookListPage {
     console.log('ionViewWillEnter');
     this.category=this.navParams.get("category");
     console.log(this.category);
-    this.bookRest.getBookList().subscribe( date =>{
+    this.bookRest.getbooklist().subscribe( date =>{
         this.books=date.filter(book=> book.category === this.category);
 
       }
